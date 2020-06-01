@@ -23,10 +23,7 @@ class Morral
 		
 }
 
-object nada
-{
-	method peso() {return 0}
-	method luminoso() {return 0}
-	method carga() {return 0}
-	
-}
+/*
+Deberia modificarse las clases ya existentes para que sean polimorficas
+a las nuevas que se desea agregar y el programa continue funcionando sin modificar otros archivos
+*/
