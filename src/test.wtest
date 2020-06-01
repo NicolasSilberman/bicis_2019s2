@@ -39,6 +39,10 @@ describe "bicicletas y depositos"
 		morral3.largo(6)
 		morral3.ojoGato(false)
 		bici3.accesorios([morral3])
+		//Bici 4
+		bici4.rodado(26)
+		bici4.largo(100)
+		bici4.marca("Legnano")
 		
 	}
 	
@@ -76,6 +80,7 @@ describe "bicicletas y depositos"
 	{
 		depositoA.bicis([bici1,bici2,bici3])
 		depositoA.kg(10)
+		depositoA.biciAComparar(bici4)
 		assert.equals([bici1,bici2],depositoA.rapidas())
 		assert.equals(#{"Olmo","Legnano"},depositoA.marcas())
 		assert.notThat(depositoA.nocturno())
@@ -85,25 +90,9 @@ describe "bicicletas y depositos"
 		assert.equals("Olmo",depositoA.marcaMasRapida())
 		assert.equals(0,depositoA.cargaTotal())
 		assert.equals(0,depositoA.cantidadSinAccesorios())
+		assert.equals([bici2,bici3],depositoA.biciCompaniera())
 		
 	}
 	
-	test "deposito A con una bici nueva"
-	{
-		bici4.rodado(28)
-		bici4.largo(170)
-		bici4.marca("Olmo")
-		depositoA.bicis([bici1,bici2,bici3,bici4])
-		depositoA.kg(10)
-		assert.equals([bici1,bici2,bici4],depositoA.rapidas())
-		assert.equals(#{"Olmo","Legnano"},depositoA.marcas())
-		assert.notThat(depositoA.nocturno())
-		assert.that(depositoA.cargaEspecifica())
-		depositoA.kg(50)
-		assert.notThat(depositoA.cargaEspecifica())
-		assert.equals("Olmo",depositoA.marcaMasRapida())
-		assert.equals(0,depositoA.cargaTotal())
-		assert.equals(2,depositoA.cantidadSinAccesorios())
-		
-	}
+
 }

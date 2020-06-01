@@ -4,6 +4,7 @@ import accesorios.*
 class Deposito{
 	var property bicis = []
 	var property kg
+	var property biciAComparar
 	
 	method rapidas() {return bicis.filter({b=>b.velocidadCrucero() > 25})}
 	method marcas() {return bicis.map({b=>b.marca()}).asSet()}
@@ -16,8 +17,11 @@ class Deposito{
 		return largas.sum({l=>l.carga()})
 	}
 	
-	method cantidadSinAccesorios() 
+	method cantidadSinAccesorios() { return bicis.count({b=>b.accesorios() == []}) }
+	
+	method biciCompaniera() 
 	{
-		return bicis.count({b=>b.accesorios() == []})
+		return bicis.filter({f=>f.marca() == biciAComparar.marca() and 
+			f.largo() - biciAComparar.largo() <= 10})
 	}
 }
