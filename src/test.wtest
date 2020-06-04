@@ -79,18 +79,18 @@ describe "bicicletas y depositos"
 	test "depositoA"
 	{
 		depositoA.bicis([bici1,bici2,bici3])
-		depositoA.kg(10)
-		depositoA.biciAComparar(bici4)
+		
+		
 		assert.equals([bici1,bici2],depositoA.rapidas())
 		assert.equals(#{"Olmo","Legnano"},depositoA.marcas())
 		assert.notThat(depositoA.nocturno())
-		assert.that(depositoA.cargaEspecifica())
-		depositoA.kg(50)
-		assert.notThat(depositoA.cargaEspecifica())
+		assert.that(depositoA.cargaEspecifica(10))
+		
+		assert.notThat(depositoA.cargaEspecifica(50))
 		assert.equals("Olmo",depositoA.marcaMasRapida())
 		assert.equals(0,depositoA.cargaTotal())
 		assert.equals(0,depositoA.cantidadSinAccesorios())
-		assert.equals([bici2,bici3],depositoA.biciCompaniera())
+		assert.equals([bici2,bici3],depositoA.sonCompanieras(bici4))
 		
 	}
 	

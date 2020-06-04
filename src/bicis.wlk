@@ -13,5 +13,11 @@ class Bici{
 	method peso() { return rodado/2 + accesorios.sum({a=>a.peso()}) }
 	method tieneLuz() { return accesorios.any({a=>a.luminoso()}) }
 	method accesoriosLivianos() { return accesorios.count({a=>a.peso() < 1}) }
+	method sonCompanieraCon(biciAComparar) 
+	{
+		return marca == biciAComparar.marca()
+		and self.largo() - biciAComparar.largo().abs() <= 10
+		and self != biciAComparar
+	}
 	
 }
